@@ -62,10 +62,10 @@ Buat kunci unik untuk keamanan *session* aplikasi:
 php artisan key:generate
 ```
 
-### 5. Jalankan Migrasi Database
-Otomatis buat struktur tabel di database Anda:
+### 5. Jalankan Migrasi Database (dan Data Dummy)
+Otomatis buat struktur tabel di database Anda beserta data contoh (akun, menu, dan kategori):
 ```bash
-php artisan migrate
+php artisan migrate --seed
 ```
 
 ### 6. Hubungkan Storage (Gambar Menu)
@@ -82,10 +82,16 @@ php artisan serve
 
 ---
 
-## 🔑 Panduan Akun Uji Coba (Admin)
+## 🔑 Panduan Akun Uji Coba (Data Dummy)
 
-Secara bawaan (*default*), saat Anda mendaftar melalui web, role yang diberikan adalah **User**. Untuk mendapatkan akses Admin:
-1. Registrasi akun baru lewat halaman web.
-2. Buka aplikasi manajemen database Anda (seperti phpMyAdmin).
-3. Buka tabel `users`, cari akun yang baru Anda buat, dan ubah nilai pada kolom `role` dari `user` menjadi `admin`.
-4. Login kembali dan Anda akan diarahkan ke halaman Admin Dashboard!
+Jika Anda menjalankan perintah `php artisan migrate --seed` pada tahap ke-5 di atas, Anda bisa langsung masuk (login) menggunakan akun *dummy* berikut tanpa perlu mendaftar manual:
+
+**Akun Admin (Dashboard Kasir/Pengelola):**
+- Email: `adminsenja@gmail.com`
+- Password: `adminsenja123`
+
+**Akun Pelanggan Biasa (User):**
+- Email: `guest@gmail.com` (atau `adel@gmail.com`)
+- Password: `guest123` (atau `adel123`)
+
+*(Catatan: Jika Anda tidak menjalankan perintah seeder, Anda harus mendaftar secara manual lewat web dan mengubah nilai pada kolom `role` menjadi `admin` langsung dari database).*
