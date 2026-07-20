@@ -15,7 +15,7 @@ class AdminController extends Controller
      */
     public function dashboard()
     {
-        // Mengambil total data dasar untuk kotak info
+        // Mengambil total data untuk card
         $totalPelanggan = User::where('role', 'user')->count();
         $totalMenu  = Menu::count();
         $totalPesanan = Order::where('status', 'selesai')->count();
